@@ -1,42 +1,40 @@
 package com.example.usage;
 
-import org.junit.*;
-import org.junit.rules.TestName;
 
-import static junit.framework.TestCase.assertEquals;
+import org.junit.jupiter.api.*;
 
-public class LifecycleDemo {
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    @Rule
-    public TestName testName = new TestName();
+class LifecycleDemo {
 
-    @BeforeClass
-    public static void beforeAll() {
+
+    @BeforeAll
+    static void beforeAll() {
         System.out.println("beforeAll");
     }
 
-    @Before
-    public void beforeEach() {
-        System.out.println("beforeEach: " + testName.getMethodName() + " in " + this);
+    @BeforeEach
+    void beforeEach(TestInfo testInfo) {
+        System.out.println("beforeEach: " + testInfo.getDisplayName() + " in " + this);
     }
 
     @Test
-    public void onePlusOneIsTwo() {
-        Assert.assertEquals(2, 1 + 1);
+    void onePlusOneIsTwo() {
+        assertEquals(2, 1 + 1);
     }
 
     @Test
-    public void zeroPlusTwoIsTwo() {
+    void zeroPlusTwoIsTwo() {
         assertEquals(2, 0 + 2);
     }
 
-    @After
-    public void afterEach() {
-        System.out.println("afterEach: " + testName.getMethodName() + " in " + this);
+    @AfterEach
+    void afterEach(TestInfo testInfo) {
+        System.out.println("afterEach: " + testInfo.getDisplayName() + " in " + this);
     }
 
-    @AfterClass
-    public static void afterAll() {
+    @AfterAll
+    static void afterAll() {
         System.out.println("afterAll");
     }
 }

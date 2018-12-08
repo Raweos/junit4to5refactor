@@ -1,15 +1,15 @@
 package com.example.extensions;
 
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static junit.framework.TestCase.fail;
+import static org.junit.jupiter.api.Assertions.fail;
 
-public class ConditionalDemo {
+class ConditionalDemo {
 
     @Test
     @DisabledOnMonday
-    public void conditionalTest() {
+    void conditionalTest() {
         fail("monday again :(");
     }
 }

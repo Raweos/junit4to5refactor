@@ -1,20 +1,22 @@
 package com.example.usage;
 
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.Assert.assertEquals;
-
-public class SimpleTest {
+class SimpleTest {
 
     @Test
-    public void myFirstTest() {
+    @DisplayName("1 + 1 = 2")
+    void myFirstTest() {
         assertEquals(2, 1 + 1);
     }
 
     @Test
-    //should be disabled with jUnit5 feature
-    public void anotherTest() {
+    @Disabled
+    void anotherTest() {
         assertEquals(0, 1 + 1);
     }
 }
